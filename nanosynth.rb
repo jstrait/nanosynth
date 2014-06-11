@@ -70,13 +70,7 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
     elsif wave_type == :saw
       samples[i] = ((position_in_period * 2.0) - 1.0) * max_amplitude
     elsif wave_type == :triangle
-      if(position_in_period < 0.5)
-        sample = ((position_in_period * 4.0) - 1.0) * max_amplitude
-      else
-        sample = (1.0 - ((position_in_period - 0.5) * 4.0)) * max_amplitude
-      end
-
-      samples[i] = sample
+      samples[i] = max_amplitude - (((position_in_period * 2.0) - 1.0) * max_amplitude * 2.0).abs
     elsif wave_type == :noise
       samples[i] = RANDOM_GENERATOR.rand(-max_amplitude..max_amplitude)
     end
@@ -92,4 +86,4 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
   samples
 end
 
-main
+#main
