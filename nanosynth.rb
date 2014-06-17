@@ -23,6 +23,10 @@
 ### by using the afplay command:
 ###
 ###   ruby nanosynth.rb sine 440.0 0.5 && afplay mysound.wav
+###
+### For more detail about how all of this works, check out this blog post:
+###
+### http://www.joelstrait.com/blog/2014/6/14/nanosynth_create_sound_with_ruby
 
 gem 'wavefile', '=0.6.0'
 require 'wavefile'
@@ -56,6 +60,7 @@ def main
   end
 end
 
+# The dark heart of NanoSynth, the part that actually generates the audio data
 def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
   position_in_period = 0.0
   position_in_period_delta = frequency / SAMPLE_RATE
@@ -66,8 +71,7 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
 
   num_samples.times do |i|
     # Add next sample to sample list. The sample value is determined by
-    # plugging the period offset into the appropriate wave function.
-
+    # plugging position_in_period into the appropriate wave function.
     if wave_type == :sine
       samples[i] = Math::sin(position_in_period * TWO_PI) * max_amplitude
     elsif wave_type == :square
@@ -82,7 +86,8 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
 
     position_in_period += position_in_period_delta
     
-    # Constrain the period between 0.0 and 1.0
+    # Constrain the period between 0.0 and 1.0.
+    # That is, keep looping and re-looping over the same period.
     if(position_in_period >= 1.0)
       position_in_period -= 1.0
     end
