@@ -9,10 +9,11 @@
 ### performance, error-handling, succinctness, etc.
 ###
 ### Example usage:
-###   ruby nanosynth.rb sine 440.0 0.5
+###   ruby nanosynth.rb sine 440.0 0.2
 ###
 ### The above usage will create a Wave file called "mysound.wav" in the current
-### working directory. You can play this file using pretty much any media player.
+### working directory, containing a 440Hz sine wave at 20% full volume.
+### You should be able to play this file in pretty much any media player.
 ###
 ### This program requires the WaveFile gem:
 ###
