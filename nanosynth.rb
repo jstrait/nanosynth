@@ -50,7 +50,7 @@ def main
 
   # Write the Buffer containing our samples to a 16-bit, monophonic Wave file
   # with a sample rate of 44,100Hz, using the WaveFile gem.
-  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, 16, 44100)) do |writer|
+  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, :pcm_16, 44100)) do |writer|
     writer.write(buffer)
   end
 end
