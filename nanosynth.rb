@@ -39,8 +39,7 @@ RANDOM_GENERATOR = Random.new
 def main
   # Read the command-line arguments.
   wave_type = ARGV[0].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise" 
-  frequency = ARGV[1].to_f      # Should be between 20.0 and 20000.0 to be audible.
-                                # 440.0 is the same as middle-A on a piano.
+  frequency = ARGV[1].to_f      # 440.0 is the same as middle-A on a piano.
   max_amplitude = ARGV[2].to_f  # Should be between 0.0 (silence) and 1.0 (full volume).
                                 # Amplitudes above 1.0 will result in distortion (or other weirdness).
 
