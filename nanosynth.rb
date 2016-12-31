@@ -1,5 +1,5 @@
 ### Nanosynth
-### Copyright (C) 2014 Joel Strait
+### Copyright (C) 2014, 2016 Joel Strait
 ###
 ### This is a very simple sound generator capable of creating sound based on
 ### five types of wave: sine, square, sawtooth, triangle, and noise.
