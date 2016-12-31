@@ -4,14 +4,14 @@
 ### This is a very simple sound generator capable of creating sound based on
 ### five types of wave: sine, square, sawtooth, triangle, and noise.
 ###
-### This is intended as a learning tool, to show a ground-floor example
+### This is intended for educational purposes, to show an example
 ### of how to create sound using Ruby. Clarity has been favored over
 ### performance, error-handling, succinctness, etc.
 ###
 ### Example usage:
 ###   ruby nanosynth.rb sine 440.0 0.2
 ###
-### The above usage will create a Wave file called "mysound.wav" in the current
+### This will create a Wave file called "mysound.wav" in the current
 ### working directory, containing a 440Hz sine wave at 20% full volume.
 ### You should be able to play this file in pretty much any media player.
 ###
