@@ -28,11 +28,13 @@
 ###
 ### http://www.joelstrait.com/nanosynth_create_sound_with_ruby/
 
-gem 'wavefile', '=0.7.0'
+gem 'wavefile'
 require 'wavefile'
 
 OUTPUT_FILENAME = "mysound.wav"
 SAMPLE_RATE = 44100
+FORMAT_BITS_PER_SAMPLE = "pcm_16" # Supported values are pcm_8, pcm_16, pcm_24, pcm_32, float_32, and float_64
+SECONDS_TO_GENERATE = 1
 TWO_PI = 2 * Math::PI
 RANDOM_GENERATOR = Random.new
 
@@ -44,17 +46,16 @@ def main
                                 # Amplitudes above 1.0 will result in distortion (or other weirdness).
 
   # Generate 1 second of sample data at the given frequency and amplitude.
-  # Since we are using a sample rate of 44,100Hz, 44,100 samples are required for one second of sound.
-  samples = generate_sample_data(wave_type, 44100, frequency, max_amplitude)
+  # Since we are using a specific sample rate measured in samples per second, that many samples are required for one second of sound.
+  samples = generate_sample_data(wave_type, SAMPLE_RATE * SECONDS_TO_GENERATE, frequency, max_amplitude)
 
   # Wrap the array of samples in a Buffer, so that it can be written to a Wave file
   # by the WaveFile gem. Since we generated samples between -1.0 and 1.0, the sample
   # type should be :float
-  buffer = WaveFile::Buffer.new(samples, WaveFile::Format.new(:mono, :float, 44100))
+  buffer = WaveFile::Buffer.new(samples, WaveFile::Format.new(:mono, :float, SAMPLE_RATE))
 
-  # Write the Buffer containing our samples to a 16-bit, monophonic Wave file
-  # with a sample rate of 44,100Hz, using the WaveFile gem.
-  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, :pcm_16, 44100)) do |writer|
+  # Write the Buffer containing our samples to a monophonic Wave file
+  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, FORMAT_BITS_PER_SAMPLE, SAMPLE_RATE)) do |writer|
     writer.write(buffer)
   end
 end
