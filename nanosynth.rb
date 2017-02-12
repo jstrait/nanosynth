@@ -33,7 +33,6 @@ require 'wavefile'
 
 OUTPUT_FILENAME = "mysound.wav"
 SAMPLE_RATE = 44100
-FORMAT_BITS_PER_SAMPLE = "pcm_16" # Supported values are pcm_8, pcm_16, pcm_24, pcm_32, float_32, and float_64
 SECONDS_TO_GENERATE = 1
 TWO_PI = 2 * Math::PI
 RANDOM_GENERATOR = Random.new
@@ -55,7 +54,7 @@ def main
   buffer = WaveFile::Buffer.new(samples, WaveFile::Format.new(:mono, :float, SAMPLE_RATE))
 
   # Write the Buffer containing our samples to a monophonic Wave file
-  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, FORMAT_BITS_PER_SAMPLE, SAMPLE_RATE)) do |writer|
+  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, :pcm_16, SAMPLE_RATE)) do |writer|
     writer.write(buffer)
   end
 end
