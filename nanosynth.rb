@@ -28,7 +28,7 @@
 ###
 ### http://www.joelstrait.com/nanosynth_create_sound_with_ruby/
 
-gem 'wavefile'
+gem 'wavefile', '=0.7.0'
 require 'wavefile'
 
 OUTPUT_FILENAME = "mysound.wav"
