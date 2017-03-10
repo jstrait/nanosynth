@@ -31,18 +31,19 @@
 gem 'wavefile', '=0.8.1'
 require 'wavefile'
 
-OUTPUT_FILENAME = "mysound.wav"
 SAMPLE_RATE = 44100
 SECONDS_TO_GENERATE = 1
 TWO_PI = 2 * Math::PI
 RANDOM_GENERATOR = Random.new
 
-def main
-  # Read the command-line arguments.
-  wave_type = ARGV[0].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise" 
-  frequency = ARGV[1].to_f      # 440.0 is the same as middle-A on a piano.
-  max_amplitude = ARGV[2].to_f  # Should be between 0.0 (silence) and 1.0 (full volume).
-                                # Amplitudes above 1.0 will result in distortion (or other weirdness).
+def main(params)
+  wave_type = params[:wave_type].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise"
+  frequency = params[:frequency].to_f      # 440.0 is the same as middle-A on a piano.
+  max_amplitude = params[:max_amplitude].to_f  # Should be between 0.0 (silence) and 1.0 (full volume).
+                                                # Amplitudes above 1.0 will result in distortion (or other weirdness).
+  tone = params[:tone]
+
+  output_filename = params[:output_filename] || "#{wave_type}_#{(tone || frequency)}_#{max_amplitude}.wav" # Filename specified or build with params of sound wave
 
   # Generate 1 second of sample data at the given frequency and amplitude.
   # Since we are using a specific sample rate measured in samples per second, that many samples are required for one second of sound.
@@ -54,7 +55,7 @@ def main
   buffer = WaveFile::Buffer.new(samples, WaveFile::Format.new(:mono, :float, SAMPLE_RATE))
 
   # Write the Buffer containing our samples to a monophonic Wave file
-  WaveFile::Writer.new(OUTPUT_FILENAME, WaveFile::Format.new(:mono, :pcm_16, SAMPLE_RATE)) do |writer|
+  WaveFile::Writer.new(output_filename, WaveFile::Format.new(:mono, :pcm_16, SAMPLE_RATE)) do |writer|
     writer.write(buffer)
   end
 end
@@ -95,4 +96,5 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
   samples
 end
 
-main
+# Read the command-line arguments.
+main({ wave_type: ARGV[0], frequency: ARGV[1], max_amplitude: ARGV[2], tone: ARGV[3]})
