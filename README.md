@@ -11,11 +11,15 @@ For a detailed description of how it works, check out this blog post: [http://ww
 
 # Example Usage
 
-NanoSynth expects 3 arguments: the waveform, frequency, and amplitude. It will then generate 1 second of sound and write it to a file called `mysound.wav` in the current directory.
+NanoSynth expects 3 arguments: the waveform, frequency, amplitude and optional output filename. It will then generate 1 second of sound and write it to a file in the current directory.
 
 For example:
 
     ruby nanosynth.rb square 440.0 0.2
+    
+Or
+
+    ruby nanosynth.rb square 440.0 0.2 mysound.wav
 
 The command above will generate a square wave of 440Hz, at 20% full volume, and write it to `mysound.wav` in the current directory.
 
