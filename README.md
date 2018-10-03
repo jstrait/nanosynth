@@ -7,7 +7,7 @@ For a detailed description of how it works, check out this blog post: [http://ww
 # Installation
 
 * Download `nanosynth.rb`
-* Install the [WaveFile gem](http://wavefilegem.com): `gem install wavefile --version 0.8.1`
+* Install the [WaveFile gem](http://wavefilegem.com): `gem install wavefile --version 1.0.1`
 
 # Example Usage
 

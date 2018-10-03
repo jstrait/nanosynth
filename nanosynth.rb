@@ -17,7 +17,7 @@
 ###
 ### This program requires the WaveFile gem:
 ###
-###   gem install wavefile --version 0.8.1
+###   gem install wavefile --version 1.0.1
 ###
 ### If you're on a Mac, you can generate the sound and play it at the same time
 ### by using the afplay command:
@@ -28,7 +28,7 @@
 ###
 ### https://www.joelstrait.com/nanosynth/
 
-gem 'wavefile', '=0.8.1'
+gem 'wavefile', '=1.0.1'
 require 'wavefile'
 
 OUTPUT_FILENAME = "mysound.wav"
