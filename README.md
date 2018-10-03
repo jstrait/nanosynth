@@ -2,7 +2,7 @@
 
 A miniature tone generator written in Ruby, intended to show how to create a minimal Ruby program that generates sound.
 
-For a detailed description of how it works, check out this blog post: [http://www.joelstrait.com/nanosynth_create_sound_with_ruby/](http://www.joelstrait.com/nanosynth_create_sound_with_ruby/)
+For a detailed description of how it works, check out this blog post: [http://www.joelstrait.com/nanosynth/](https://www.joelstrait.com/nanosynth/)
 
 # Installation
 

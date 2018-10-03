@@ -26,7 +26,7 @@
 ###
 ### For more detail about how all of this works, check out this blog post:
 ###
-### http://www.joelstrait.com/nanosynth_create_sound_with_ruby/
+### https://www.joelstrait.com/nanosynth/
 
 gem 'wavefile', '=0.8.1'
 require 'wavefile'
