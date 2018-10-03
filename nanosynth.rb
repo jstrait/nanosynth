@@ -39,7 +39,7 @@ RANDOM_GENERATOR = Random.new
 
 def main
   # Read the command-line arguments.
-  wave_type = ARGV[0].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise" 
+  wave_type = ARGV[0].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise"
   frequency = ARGV[1].to_f      # 440.0 is the same as middle-A on a piano.
   max_amplitude = ARGV[2].to_f  # Should be between 0.0 (silence) and 1.0 (full volume).
                                 # Amplitudes above 1.0 will result in distortion (or other weirdness).
@@ -84,14 +84,14 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
     end
 
     position_in_period += position_in_period_delta
-    
+
     # Constrain the period between 0.0 and 1.0.
     # That is, keep looping and re-looping over the same period.
     if(position_in_period >= 1.0)
       position_in_period -= 1.0
     end
   end
-  
+
   samples
 end
 
