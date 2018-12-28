@@ -46,7 +46,8 @@ def main
 
   # Generate 1 second of sample data at the given frequency and amplitude.
   # Since we are using a specific sample rate measured in samples per second, that many samples are required for one second of sound.
-  samples = generate_sample_data(wave_type, SAMPLE_RATE * SECONDS_TO_GENERATE, frequency, max_amplitude)
+  num_samples = SAMPLE_RATE * SECONDS_TO_GENERATE
+  samples = generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
 
   # Wrap the array of samples in a Buffer, so that it can be written to a Wave file
   # by the WaveFile gem. Since we generated samples between -1.0 and 1.0, the sample
