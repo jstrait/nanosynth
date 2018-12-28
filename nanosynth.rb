@@ -89,7 +89,7 @@ def generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
 
     # Constrain the period between 0.0 and 1.0.
     # That is, keep looping and re-looping over the same period.
-    if(position_in_period >= 1.0)
+    if position_in_period >= 1.0
       position_in_period -= 1.0
     end
   end
