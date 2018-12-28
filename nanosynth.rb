@@ -44,8 +44,9 @@ def main
   max_amplitude = ARGV[2].to_f  # Should be between 0.0 (silence) and 1.0 (full volume).
                                 # Amplitudes above 1.0 will result in distortion (or other weirdness).
 
-  # Generate 1 second of sample data at the given frequency and amplitude.
-  # Since we are using a specific sample rate measured in samples per second, that many samples are required for one second of sound.
+  # Generate sample data at the given frequency and amplitude.
+  # The sample rate indicates how many samples we need to generate for
+  # 1 second of sound.
   num_samples = SAMPLE_RATE * SECONDS_TO_GENERATE
   samples = generate_sample_data(wave_type, num_samples, frequency, max_amplitude)
 
