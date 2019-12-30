@@ -47,7 +47,7 @@ RANDOM_GENERATOR = Random.new
 
 def main
   # Read the command-line arguments.
-  wave_type = ARGV[0].to_sym    # Should be "sine", "square", "saw", "triangle", or "noise"
+  waveform = ARGV[0].to_sym     # Should be "sine", "square", "saw", "triangle", or "noise"
   frequency = ARGV[1].to_f      # 440.0 is the same as middle-A on a piano.
   amplitude = ARGV[2].to_f      # Should be between 0.0 (silence) and 1.0 (full volume).
                                 # Amplitudes above 1.0 will result in distortion (or other weirdness).
@@ -56,7 +56,7 @@ def main
   # The sample rate indicates how many samples we need to generate for
   # 1 second of sound.
   num_samples = SAMPLE_RATE * SECONDS_TO_GENERATE
-  samples = generate_sample_data(wave_type, num_samples, frequency, amplitude)
+  samples = generate_sample_data(waveform, num_samples, frequency, amplitude)
 
   # Wrap the array of samples in a Buffer, so that it can be written to a Wave file
   # by the WaveFile gem. Since we generated samples between -1.0 and 1.0, the sample
@@ -70,7 +70,7 @@ def main
 end
 
 # The dark heart of NanoSynth, the part that actually generates the audio data
-def generate_sample_data(wave_type, num_samples, frequency, amplitude)
+def generate_sample_data(waveform, num_samples, frequency, amplitude)
   position_in_period = 0.0
   position_in_period_delta = frequency / SAMPLE_RATE
 
@@ -81,15 +81,15 @@ def generate_sample_data(wave_type, num_samples, frequency, amplitude)
   num_samples.times do |i|
     # Add next sample to sample list. The sample value is determined by
     # plugging position_in_period into the appropriate wave function.
-    if wave_type == :sine
+    if waveform == :sine
       samples[i] = Math::sin(position_in_period * TWO_PI) * amplitude
-    elsif wave_type == :square
+    elsif waveform == :square
       samples[i] = (position_in_period >= 0.5) ? amplitude : -amplitude
-    elsif wave_type == :saw
+    elsif waveform == :saw
       samples[i] = ((position_in_period * 2.0) - 1.0) * amplitude
-    elsif wave_type == :triangle
+    elsif waveform == :triangle
       samples[i] = amplitude - (((position_in_period * 2.0) - 1.0) * amplitude * 2.0).abs
-    elsif wave_type == :noise
+    elsif waveform == :noise
       samples[i] = RANDOM_GENERATOR.rand(-amplitude..amplitude)
     end
 
