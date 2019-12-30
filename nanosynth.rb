@@ -28,8 +28,8 @@
 ###
 ### https://www.joelstrait.com/nanosynth/
 
-gem 'wavefile', '=1.1.1'
-require 'wavefile'
+gem "wavefile", "=1.1.1"
+require "wavefile"
 
 OUTPUT_FILENAME = "mysound.wav"
 SAMPLE_RATE = 44100
