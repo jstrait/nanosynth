@@ -1,5 +1,5 @@
 ### Nanosynth
-### Copyright (C) 2014, 2016-18 Joel Strait
+### Copyright (C) 2014, 2016-19 Joel Strait
 ###
 ###
 ### This is a simple sound generator capable of creating sound based on
