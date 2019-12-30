@@ -59,8 +59,8 @@ def main
   samples = generate_sample_data(waveform, num_samples, frequency, amplitude)
 
   # Wrap the array of samples in a Buffer, so that it can be written to a Wave file
-  # by the WaveFile gem. Since we generated samples between -1.0 and 1.0, the sample
-  # type should be :float
+  # by the WaveFile gem. Since we generated samples with values between -1.0 and 1.0,
+  # the sample format should be :float
   buffer = WaveFile::Buffer.new(samples, WaveFile::Format.new(:mono, :float, SAMPLE_RATE))
 
   # Write the Buffer containing our samples to a monophonic Wave file
