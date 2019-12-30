@@ -13,6 +13,8 @@ For a detailed description of how it works, check out this blog post: <https://w
 
 NanoSynth expects 3 arguments: the waveform, frequency, and amplitude. It will then generate 1 second of sound and write it to a file called `mysound.wav` in the current directory.
 
+    ruby nanosynth.rb <waveform> <frequency> <amplitude>
+
 For example:
 
     ruby nanosynth.rb square 440.0 0.2
@@ -20,3 +22,5 @@ For example:
 The command above will generate a square wave of 440Hz, at 20% full volume, and write it to `mysound.wav` in the current directory.
 
 The waveform can be one of `sine`, `square`, `saw`, `triangle`, or `noise`.
+
+The amplitude should be between 0.0 (silence) and 1.0 (full volume). Amplitudes above 1.0 will result in clipping distortion.

@@ -1,6 +1,7 @@
 ### Nanosynth
 ### Copyright (C) 2014, 2016-18 Joel Strait
 ###
+###
 ### This is a simple sound generator capable of creating sound based on
 ### five types of wave: sine, square, sawtooth, triangle, and noise.
 ###
@@ -8,25 +9,32 @@
 ### of how to create sound using Ruby. Clarity has been favored over
 ### performance, error-handling, succinctness, etc.
 ###
-### Example usage:
+###
+### Before using, first install the WaveFile gem:
+###
+###   gem install wavefile --version 1.1.1
+###
+### And then to use, run `ruby nanosynth.rb` with these arguments:
+###
+###   ruby nanosynth.rb <waveform> <frequency> <amplitude>
+###
+### For example:
+###
 ###   ruby nanosynth.rb sine 440.0 0.2
 ###
 ### This will create a Wave file called "mysound.wav" in the current
 ### working directory, containing a 440Hz sine wave at 20% full volume.
 ### You should be able to play this file in pretty much any media player.
 ###
-### This program requires the WaveFile gem:
-###
-###   gem install wavefile --version 1.1.1
-###
 ### If you're on a Mac, you can generate the sound and play it at the same time
 ### by using the afplay command:
 ###
 ###   ruby nanosynth.rb sine 440.0 0.5 && afplay mysound.wav
 ###
+###
 ### For more detail about how all of this works, check out this blog post:
 ###
-### https://www.joelstrait.com/nanosynth/
+###   https://www.joelstrait.com/nanosynth/
 
 gem "wavefile", "=1.1.1"
 require "wavefile"
